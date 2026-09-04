@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max Perf WebGL2 · Instanced Batch</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0a0c; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    canvas { display: block; width: 100vw; height: 100vh; }
+    #hud {
+      position: fixed; top: 12px; left: 12px; z-index: 10;
+      color: #e0e0e0; font-size: 13px; line-height: 1.5;
+      background: rgba(10,10,12,0.75); padding: 10px 14px; border-radius: 8px;
+      border: 1px solid #222; pointer-events: none; backdrop-filter: blur(6px);
+    }
+    #hud b { color: #7dd3fc; }
+    #controls {
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 10px; align-items: center; z-index: 10;
+      background: rgba(10,10,12,0.8); padding: 8px 14px; border-radius: 10px;
+      border: 1px solid #2a2a2e;
+    }
+    #controls label { color: #aaa; font-size: 12px; }
+    #controls input[type=range] { width: 140px; accent-color: #7dd3fc; }
+    #controls button {
+      background: #1e293b; color: #e2e8f0; border: 1px solid #334155;
+      padding: 5px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;
+    }
+    #controls button:hover { background: #334155; }
+  </style>
+</head>
+<body>
+  <canvas id="c"></canvas>
+  <div id="hud">
+    <div>FPS: <b id="fps">—</b></div>
+    <div>Boxes: <b id="count">0</b></div>
+    <div>Draw calls: <b>1</b> · Instanced</div>
+  </div>
+  <div id="controls">
+    <label>Count <span id="countLabel">50000</span></label>
+    <input type="range" id="countSlider" min="1000" max="200000" step="1000" value="50000" />
+    <button id="togglePhys">Physics: ON</button>
+  </div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
